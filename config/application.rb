@@ -17,7 +17,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Waroong
+module Waroong1
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     #config.load_defaults 6.0
@@ -32,5 +32,6 @@ module Waroong
     end
     config.i18n.default_locale = :cn
     config.time_zone = "Asia/Shanghai"
+    config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
   end
 end

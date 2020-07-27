@@ -18,6 +18,9 @@ gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'breadcrumbs_on_rails'
+gem 'redis-rails'
+gem 'connection_pool'
+gem 'redis-objects'
 
 group :development, :test do
   gem 'dotenv-rails'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_140536) do
+ActiveRecord::Schema.define(version: 2020_07_27_062203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_140536) do
     t.integer "total_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_140536) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "address_id"
+    t.string "uid"
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_140536) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "cellphone"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
