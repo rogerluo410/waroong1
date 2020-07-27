@@ -13,9 +13,27 @@ body {
   background: #ECF0F3;
 }
 
-.card {
-  height: 100%;
+.bg {
+  /* The image used */
+  background-image: asset-url('bg.png');
+  /* Full height */
+  // height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+.card {
+  margin: 5% 0%;
+}
+
+.card-body {
+  margin: 0% 0% 0% 3%;
+  padding: 6% 0%;
+}
+
 
 a {
   color: #11b4b4;

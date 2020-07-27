@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   add_breadcrumb '历史订单', :orders_path
 
   def index
-    @orders = current_user.orders.where("id >= ?", 2)
+    @orders = current_user.orders
   end
 
   def show

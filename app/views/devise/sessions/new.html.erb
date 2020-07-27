@@ -1,8 +1,9 @@
 <div class="container">
-  <div class="row ">
+  <div class="row justify-content-center">
     <div class="col-md-4 offset-md-4 p-4 card bg-light">
       <h4>用户登录</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group">
           <%= f.label '手机号' %><br/>
           <%= f.text_field :cellphone, autofocus: true, class: "form-control" %>

@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :order_status
   has_many :order_items, dependent: :destroy
   before_save :update_subtotal
+  after_initialize :set_uid
 
   def to_wait_pay
     order_status_id = 2 # 待支付
@@ -52,5 +53,9 @@ private
 
   def update_subtotal
     self[:subtotal] = subtotal
+  end
+
+  def set_uid
+    self.uid = Digest::SHA1.hexdigest("--#{Time.current.usec}--")
   end
 end

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  # protect_from_forgery prepend: true, with: :exception
   helper_method :current_order
   before_action :set_categories
 

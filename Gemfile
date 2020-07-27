@@ -21,6 +21,7 @@ gem 'breadcrumbs_on_rails'
 gem 'redis-rails'
 gem 'connection_pool'
 gem 'redis-objects'
+gem 'toastr-rails'
 
 group :development, :test do
   gem 'dotenv-rails'

@@ -7,6 +7,7 @@ class ChargesController < ApplicationController
     end
 
     current_order.update_attributes(order_status_id: 2, user_id: current_user.id)
+    current_user.loop_to_cart current_order
     @address = current_user.addresses.find(params["address_id"])
   end
 

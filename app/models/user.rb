@@ -7,15 +7,14 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
 
   include Redis::Objects
-  hash_key :cart
+  hash_key :cart, :expiration => 15.minutes
 
   def email_required? 
     false 
   end
 
-  def add_item_to_cart(order_item_id, num = 1)
-    order_item = OrderItem.find(order_item_id)
-    self.cart[order_item_id.to_s] = { order_item: order_item, num: num }
+  def loop_to_cart current_order
+    self.cart[current_order.uid] = current_order
   end
 
   def remove_item_to_cart order_item_id
