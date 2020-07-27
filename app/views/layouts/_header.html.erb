@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <%= link_to "国医堂在线商城", root_path, class: "navbar-brand" %>
+  <button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarCollapse" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <!--<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% @categories.each do |cat| %>
+            <%= link_to cat.name.capitalize, category_path(cat), class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </li>-->
+      <%= form_with(url: "/products", method: "get", class: "form-inline" ) do %>
+        <%= search_field(:product, :name, class: "form-control mr-sm-2", placeholder: "搜索药品") %>
+      <% end %>
+    </ul>
+
+    <span class="cart-text">
+      <%= render 'layouts/cart_text' %>
+    </span>
+    <%= render 'layouts/auth' %>
+  </div>
+</nav>

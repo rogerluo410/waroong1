@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <%= link_to current_user.cellphone, "#", class: "nav-link dropdown-toggle", role: "button", "data-toggle": "dropdown" %>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to '历史订单', orders_path, :class => 'dropdown-item' %>
+        <%= link_to '地址管理', addresses_path, :class => 'dropdown-item' %>
+        <%= link_to '修改密码', edit_user_registration_path, :class => 'dropdown-item' %>
+        <%= link_to "退出", destroy_user_session_path, method: :delete, :class => 'dropdown-item' %>
+      </div>
+    </li>
+  </ul>
+<% else %>
+  <%= link_to "注册", new_user_registration_path, class: "btn btn-danger mx-1", role: "button" %>
+  <%= link_to "登录", new_user_session_path, class: "btn btn-primary ", role: "button" %>
+<% end %>

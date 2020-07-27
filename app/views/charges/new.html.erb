@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 offset-md-3 p-4 card bg-light">
+      <h4>确认订单</h4>
+      <form action="/charges" method="post" id="payment-form">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <div class="item-b-l pl-3 pb-3 mt-3">
+          <div class="row">
+            <%= @address.name %> <%= @address.cellphone %>
+          </div>
+          <div class="row">
+            <%= @address.address%>
+          </div>
+          <div class="row">
+            <%= @address.post %>
+          </div>
+        </div>
+        <div class="form-row item-b-l mt-2">
+          <div id="card-element" class="w-100">
+            <!-- A Stripe Element will be inserted here. -->
+            <% current_order.order_items.each do |order_item| %>
+              <div class="row justify-content-between mt-2 pl-3 pr-3 pb-3">
+                <div>
+                  <%= order_item&.product&.name %>
+                  ¥ <%= order_item.unit_price_yuan %> X <%= order_item.quantity.to_i %>
+                </div>
+                <div>
+                  ¥ <%= order_item.total_price_yuan %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Used to display form errors. -->
+          <br />
+          <div class="alert-danger text-center" id="card-errors" role="alert"></div>
+        </div>
+        <div class="row justify-content-end mt-3 pl-3 pr-2 pb-3">
+          总计: ¥ <%= current_order.subtotal_yuan %>
+        </div>
+
+        <br/>
+        <button class="btn btn-primary">支付</button>
+      </form>
+
+  </div>
+</div>
+
+<style>
+.item-b-l {
+  border-bottom: 1px solid #ecf0f3;
+}
+</style>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <div class="card">
+          <%= image_tag(product.image.variant(resize_to_fill: [192, 192]), class: "card-img-top") if product.image.attached? %>
+          <div class="card-body">
+            <%= link_to product, title: "查看药品详情" do %>
+              <p class="card-text"><%= product.name %></p>
+            <% end %>
+            <p class="card-text"><%= product.specification %></p>
+            <p class="card-text">价格: ¥<%= product.sell_price_fen_yuan %></p>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="row justify-content-center align-content-center">
+              <%= form_for @order_item, remote: true do |f| %>
+                <%= f.hidden_field :quantity, value: 1 %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.button fa_icon("fa fa-shopping-cart fa-2x", text: "加入购物车"), class: "pr-2", style: "color:#1C83C9;" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

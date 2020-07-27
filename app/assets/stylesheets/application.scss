@@ -1,0 +1,26 @@
+@import "bootstrap";
+@import "font-awesome";
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding-top: 3rem;
+  font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+  background: #ECF0F3;
+}
+
+.card {
+  height: 100%;
+}
+
+a {
+  color: #11b4b4;
+}
+a:hover {
+  color: #85aacf;;
+  text-decoration: underline overline dotted red;
+}

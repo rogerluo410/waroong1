@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Waroong</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    <div class="mt-2">
+      <%= render "layouts/alert" %>
+    </div>
+
+    <%= bread_crumb do %>
+      <%= render_breadcrumbs separator: '&nbsp;&nbsp;>&nbsp;&nbsp;' %>
+    <% end %>
+    
+    <div class="container mt-2">
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
+</html>

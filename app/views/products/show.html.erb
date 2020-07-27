@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card">
+      <%= image_tag(@product.image.variant(resize_to_fill: [360, 360]), class: "img-fluid") if @product.image.attached? %>
+      <div class="card-body">
+        <h3 class="card-title"><%= @product.name %></h3>
+        <%= form_for @order_item, remote: true do |f| %>
+          <p class="card-text"> 价格: ¥<%= @product.sell_price_fen_yuan %></p>
+          <p class="card-text"> 规格: <%= @product.specification %></p>
+          <p class="card-text"> 生产厂商: <%= @product.vendor_cn %></p>
+          <div class="input-group mb-3">
+            <%= f.number_field :quantity, value: 1, class: "form-control", min: 1  %>
+            <div class="input-group-append">
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.submit "加入购物车", class: "btn btn-outline-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

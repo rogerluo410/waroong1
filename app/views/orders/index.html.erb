@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row bg-light">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">订单编号</th>
+          <th scope="col">总价</th>
+          <th scope="col">状态</th>
+          <th scope="col">日期</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each_with_index do |order, index | %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= order.id %></td>
+            <td>¥ <%= order.subtotal_yuan %></td>
+            <td><%= order.order_status&.name %></td>
+            <td><%= order.created_at&.try(:strftime, "%Y-%m-%d %H:%M:%S") %></td>
+            <td>查看详情</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+cn:
+  date:
+    day_names:
+    - 星期日
+    - 星期一
+    - 星期二
+    - 星期三
+    - 星期四
+    - 星期五
+    - 星期六
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 不能为空
+            password:
+              blank: 不能为空
+              too_short: 密码不能少于6位
+            password_confirmation:
+              confirmation: 密码不一致
+    models:
+      product: 药品
+      product_category: 药品类型
+      order_status: 订单状态管理
+      order: 订单
+      order_item: 订单项
+      user: 用户
+  helpers:
+    submit:
+      order:
+        create: '创建订单'
+        update: '编辑订单'
+      order_item:
+        create: '创建订单项'
+        update: '编辑订单项'
+      order_status:
+        create: '创建'
+        update: '编辑'
+      product:
+        create: '创建药品'
+        update: '编辑药品'
+      product_category:
+        create: '创建药品类型'
+        update: '编辑药品类型'
+    label:
+      order:
+        id: 订单编号
+        order_items: 订单项
+        subtotal: 小计
+        subtotal_yuan: 小计
+        total: 总计
+        total_yuan: 总计
+        address: 送货地址
+        shipping: 快递费
+        shipping_yuan: 快递费
+        order_status: 订单状态
+        tax: 税
+        tax_yuan: 税
+        created_at: 创建时间
+        updated_at: 更新时间
+      order_item:
+        id: 编号
+        product: "药品"
+        order: "订单"
+        unit_price: "单价"
+        unit_price_yuan: "单价"
+        quantity: "数量"
+        total_price: "总价"
+        total_price_yuan: "总价"
+        created_at: 创建时间
+        updated_at: 更新时间
+      product:
+        id: 药品编号
+        name: 药品名称
+        price_fen: 进货价
+        price_fen_yuan: 进货价
+        sell_price_fen: 零售价
+        sell_price_fen_yuan: 零售价
+        inventory: 库存
+        specification: 规格
+        vendor_cn: 生产产商
+        active: 是否上架
+        image: 图片
+        product_category: 药品类型
+        product_category_id: 药品类型
+        created_at: 创建时间
+        updated_at: 更新时间
+      product_category:
+        id: 编号
+        name: 药品类型名
+        description: 描述
+        created_at: 创建时间
+        updated_at: 更新时间
+      order_status:
+        id: 编号
+        orders: 订单
+        name: 状态
+        created_at: 创建时间
+        updated_at: 更新时间
+  administrate:
+    actions:
+      confirm: 确定?
+      destroy: 删除
+      edit: 编辑
+      edit_resource: 编辑
+      show_resource: 查看
+      new_resource: 新建
+      back: 返回
+    controller:
+      create:
+        success: "创建成功."
+      destroy:
+        success: "删除成功."
+      update:
+        success: "更新成功."
+    fields:
+      has_many:
+        more: 显示所有 %{total_count} 中 %{count} 条
+        none: 无
+    form:
+      error: 错误
+      errors: "%{resource_name} 保存前出现了 %{pluralized_errors} 个错误："
+    navigation:
+      back_to_app: 返回应用
+    search:
+      clear: 清除搜索
+      label: 搜索 %{resource}
