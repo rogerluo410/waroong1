@@ -4,6 +4,8 @@
 @import "form";
 @import "table";
 @import "select";
+@import "card";
+@import "cart";
 
 html,
 body,
@@ -47,7 +49,7 @@ body {
 
 .bg {
   /* The image used */
-  background-image: asset-url('bg.png');
+  background-image: asset-url('login-bg.png');
   /* Full height */
   // height: 100%;
 
@@ -72,5 +74,17 @@ a {
 }
 a:hover {
   color: #85aacf;;
-  text-decoration: underline overline dotted red;
+  // text-decoration: underline overline dotted red;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-dark {
+  color: #000000;
+}
+
+.text-warning {
+  color: #f0ad4e
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="card-deck row">
     <% @products.each do |product| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -29,4 +29,48 @@
       </div>
     <% end %>
   </div>
-</div>
+</div>-->
+
+<section class="wrapper">
+  <div class="container-fostrap">
+    <%# <div>
+        <img src="https://4.bp.blogspot.com/-7OHSFmygfYQ/VtLSb1xe8kI/AAAAAAAABjI/FxaRp5xW2JQ/s320/logo.png" class="fostrap-logo"/>
+        <h1 class="heading">
+            Bootstrap Card Responsive 
+        </h1>
+    </div> %>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <% @products.each do |product| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card">
+                <%= link_to product, class: "img-card", title: "查看药品详情" do %>
+                  <%= image_tag(product.image.variant(resize_to_fill: [192, 192]), class: "card-img-top") if product.image.attached? %>
+                <% end %>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    <%= link_to product, title: "查看药品详情" do %>
+                      <%= product.name %>
+                    <% end %>
+                  </h4>
+                  <p class="">
+                    <p class="card-text"><%= product.specification %></p>
+                    <p class="card-text">价格: ¥ <%= product.sell_price_fen_yuan %></p>
+                  </p>
+                </div>
+                <div class="card-read-more">
+                  <%= form_for @order_item, remote: true do |f| %>
+                    <%= f.hidden_field :quantity, value: 1 %>
+                    <%= f.hidden_field :product_id, value: product.id %>
+                    <%= f.submit "加入购物车", class: "btn btn-block text-warning pr-2" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

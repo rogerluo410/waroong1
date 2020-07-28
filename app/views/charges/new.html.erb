@@ -1,18 +1,19 @@
 <div class="container">
-  <div class="row ">
-    <div class="col-md-6 offset-md-3 p-4 card bg-light">
-      <h4>确认订单</h4>
-      <p><span id="expiry_time"></span>后订单过期, 请尽快支付.</p>
+  <div class="row justify-content-center">
+    <div class="col-md-6 offset-md-3 p-4 card bg-white">
+      <h5>支付订单</h5>
+      <p><span id="expiry_time" class="text-warning"></span> 后支付过期, 请尽快完成支付.</p>
       <form action="/charges" method="post" id="payment-form">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-        <div class="item-b-l pl-3 pb-3 mt-3">
-          <div class="row">
+        <div class="item-tb-l pl-3 pb-3 mt-3 pt-3">
+          <label class="text-muted"><i class='fa fa-address-book'></i> 收货地址</label>
+          <div class="text-muted">
             <%= @address.name %> <%= @address.cellphone %>
           </div>
-          <div class="row">
+          <div class="text-muted">
             <%= @address.address%>
           </div>
-          <div class="row">
+          <div class="text-muted">
             <%= @address.post %>
           </div>
         </div>
@@ -21,9 +22,9 @@
             <!-- A Stripe Element will be inserted here. -->
             <% current_order.order_items.each do |order_item| %>
               <div class="row justify-content-between mt-2 pl-3 pr-3 pb-3">
-                <div>
+                <div class="text-muted">
                   <%= order_item&.product&.name %>
-                  ¥ <%= order_item.unit_price_yuan %> X <%= order_item.quantity.to_i %>
+                  ¥ <%= order_item.unit_price_yuan %> <span class="pl-3 pr-3">x</span> <%= order_item.quantity.to_i %>
                 </div>
                 <div>
                   ¥ <%= order_item.total_price_yuan %>
@@ -41,7 +42,7 @@
         </div>
 
         <br/>
-        <button class="btn btn-primary">支付</button>
+        <button class="btn btn-info">支付</button>
       </form>
 
   </div>
@@ -69,6 +70,11 @@
 
 <style>
 .item-b-l {
+  border-bottom: 1px solid #ecf0f3;
+}
+
+.item-tb-l {
+  border-top: 1px solid #ecf0f3;
   border-bottom: 1px solid #ecf0f3;
 }
 </style>

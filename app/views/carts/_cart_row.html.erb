@@ -1,34 +1,30 @@
-<div class="row item-b-l">
-  <div class="col-md-4">
+<div class="item">
+  <div class="buttons">
+    <%= link_to "", order_item, {data: {confirm: "确认从购物车中删除 '#{order_item.product.name}' ?"}, method: :delete, remote: true, class: "delete-btn"} %>
+  </div>
+
+  <div class="image">
     <%= image_tag(product.image.variant(resize_to_fill: [192, 192]), class: "img-fluid") if product.image.attached? %>
   </div>
-  <div class="col">
-    <div class="card-body">
-      <%= form_for order_item, remote: true do |f| %>
-        <div class="form-group">
-          <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
-          <%= f.hidden_field :product_id, value: product.id %>
-        </div>
-        <div class="btn-group">
-          <%= f.submit "更新数量", class: "btn btn-primary" %>
-          <%= link_to "删除", order_item, {data: {confirm: "确认从购物车中删除 '#{order_item.product.name}' ?"}, method: :delete, remote: true, class: "btn btn-danger"} %>
-        </div>
-      <% end %>
-      <div class="mt-2">
-        药品: <%= product.name %> /  单价: ¥ <%= order_item.unit_price_yuan %>
-        <div class="row pl-3">
-          规格: <%= product.specification %>
-        </div>
-        <div class="row justify-content-end pr-4">
-          总价: ¥ <%= order_item.total_price_yuan %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<style>
-.item-b-l {
-  border-bottom: 1px solid #ecf0f3;
-}
-</style>
+  <div class="description">
+    <span><%= product.name %></span>
+    <span>单价: ¥ <%= order_item.unit_price_yuan %></span>
+    <span><%= product.specification %></span>
+  </div>
+
+  <%= form_for order_item, remote: true do |f| %>
+    <div class="quantity">
+      <%= f.button "", value: "add", type: :submit, class: "plus-btn" do %>
+        <img src="<%= image_url('icons/plus.svg') %>" alt="" />
+      <% end %>
+      <%= f.text_field :quantity, value: order_item.quantity.to_i, disabled: true %>
+      <%= f.hidden_field :product_id, value: product.id %>
+      <%= f.button "", value: "minus", type: :submit, class: "minus-btn" do %>
+        <img src="<%= image_url('icons/minus.svg') %>" alt="" />
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="total-price">¥ <%= order_item.total_price_yuan %></div>
+</div>

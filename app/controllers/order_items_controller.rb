@@ -18,7 +18,11 @@ class OrderItemsController < ApplicationController
   def update
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
-    @order_item.update_attributes(order_item_params)
+    if params[:button] === "add"
+      @order_item.update(order_item_params.merge(quantity: @order_item.quantity + 1))
+    elsif params[:button] === "minus"
+      @order_item.update(order_item_params.merge(quantity: @order_item.quantity - 1)) if @order_item.quantity > 1
+    end
     @order_items = @order.order_items
   end
 

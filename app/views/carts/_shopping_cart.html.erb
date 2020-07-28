@@ -11,34 +11,37 @@
   <p class="text-center">
     购物车中还没有药品. 请 <%= link_to "返回", root_path %> 并将药品加入购物车.
   </p>
+  <div class="row justify-content-center">
+    <img src="<%= image_url('car.png') %>" alt="购物车中没有商品" />
+  </div>
 <% else %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <%= form_with(url: "/charges/new", method: "get" ) do  |f| %>
-          <div class="card">
-            <% if current_user.addresses.length > 0 %>
-              <div class="item-b-l pb-3 mt-3 pr-3 pl-3">
-                <label class="text-muted">选择收货地址</label>
-                <select name="address_id" class="custom-select my-select" id="inputGroupSelect01">
-                  <% current_user.addresses.each_with_index do | address, index| %>
-                    <option selected="<%= index === 0 %>" value="<%= address.id %>" ><%= address.name %> <%= address.cellphone %> <%= address.address%> <%= address.post %></option>
-                  <% end %>
-                </select>
-              </div>
-            <% else %>
-              <p class="text-center">
-                您还没有添加收货地址, 请先 <%= link_to "添加", addresses_path %> 收货地址.
-              </p>
-            <% end %>
-            <% @order_items.each do |order_item| %>
-              <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-            <% end %>
-            <%= f.submit "确认订单", class: "btn btn-info", data: { turbolinks: 'false'} %>
-          </div>
-        <% end %>
+  <div class="shopping-cart">
+    <!-- Title -->
+    <%= form_with(url: "/charges/new", method: "get" ) do  |f| %>
+      <div class="row title justify-content-between pl-4 pr-4">
+        <div>
+          <i class='fa fa-shopping-cart'></i> 购物车 (<%= @order_items.length %>)
+        </div>
+        <%= f.submit "确认订单", class: "btn btn-xs btn-info", data: { turbolinks: 'false'} %>
       </div>
-    </div>
+      <% if current_user.addresses.length > 0 %>
+        <div class="item-b-l pb-3 mt-3 pr-3 pl-3">
+          <label class="text-muted"><i class='fa fa-address-book'></i> 选择收货地址</label>
+          <select name="address_id" class="custom-select my-select" id="inputGroupSelect01">
+            <% current_user.addresses.each_with_index do | address, index| %>
+              <option selected="<%= index === 0 %>" value="<%= address.id %>" ><%= address.name %> <%= address.cellphone %> <%= address.address%> <%= address.post %></option>
+            <% end %>
+          </select>
+        </div>
+      <% else %>
+        <p class="text-center">
+          您还没有添加收货地址, 请先 <%= link_to "添加", addresses_path %> 收货地址.
+        </p>
+      <% end %>
+    <% end %>
+    <% @order_items.each do |order_item| %>
+      <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+    <% end %>
   </div>
 <% end %>
 

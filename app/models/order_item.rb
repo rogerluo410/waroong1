@@ -8,6 +8,8 @@ class OrderItem < ApplicationRecord
 
   before_save :finalize
 
+  default_scope { order(:created_at) }
+
   def unit_price
     if persisted?
       self[:unit_price]

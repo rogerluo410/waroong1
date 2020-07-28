@@ -32,7 +32,7 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update_attributes(address_params)
+    @address.update(address_params)
 
     if @address.persisted?
       flash[:notice] = '更新地址成功'
@@ -45,7 +45,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address = Address.find(params[:id])
-    @address.update_attributes(is_delete: true)
+    @address.update(is_delete: true)
   end
 
   private
