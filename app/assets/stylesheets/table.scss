@@ -1,0 +1,83 @@
+// bootstrap defaults
+$table-border-color: #ddd;
+$table-cell-padding: 8px;
+$screen-phone: 480px;
+$screen-tablet: 768px;
+
+// variables -----------------
+
+$sizes: (
+  'phone'   $screen-phone,
+  'tablet'  $screen-tablet
+);
+
+// mixins -----------------
+
+@mixin property-color-opacity($property, $color, $opacity: 1) {
+    $property: $color; // fallback
+    $property: rgba($color, $opacity);
+}
+
+// -----------------
+
+.table-collapse {
+
+  // Iterate through each array value.
+  // The first property is used in the name of the class
+  // The second property is the target dimension.
+  @each $size in $sizes {
+    $name: nth($size, 1);
+    $width: nth($size, 2);
+
+    @media screen and (max-width: $width) {
+      &-#{$name} {
+        display: block;
+
+        caption,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+
+        thead,
+        tfoot {
+          display: none;
+        }
+
+        tr {
+          border-top: 1px solid $table-border-color;
+
+          &:first-child {
+            border: 0;
+          }
+        }
+
+        > tbody > tr > th,
+        > tbody > tr > td {
+          @include property-color-opacity(border-top-color, $table-border-color, 0.5);
+
+          &:first-child {
+            border: 0;
+          }
+        }
+
+        .has-label[data-label] {
+          position: relative;
+          padding-left: 50% !important;
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: $table-cell-padding;
+            content: attr(data-label);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+}

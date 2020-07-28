@@ -1,5 +1,33 @@
 @import "bootstrap";
 @import "font-awesome";
+@import "buttons";
+@import "form";
+@import "table";
+@import "select";
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 1000px;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 650px;
+  }
+}
 
 html {
   font-family: sans-serif;
@@ -11,6 +39,10 @@ body {
   padding-top: 3rem;
   font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
   background: #ECF0F3;
+}
+
+.session-body {
+  padding-top: 0;
 }
 
 .bg {

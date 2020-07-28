@@ -18,11 +18,9 @@
         <%= form_with(url: "/charges/new", method: "get" ) do  |f| %>
           <div class="card">
             <% if current_user.addresses.length > 0 %>
-              <div class="input-group item-b-l pb-3 mt-3 pr-3 pl-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">选择收货地址</label>
-                </div>
-                <select name="address_id" class="custom-select" id="inputGroupSelect01">
+              <div class="item-b-l pb-3 mt-3 pr-3 pl-3">
+                <label class="text-muted">选择收货地址</label>
+                <select name="address_id" class="custom-select my-select" id="inputGroupSelect01">
                   <% current_user.addresses.each_with_index do | address, index| %>
                     <option selected="<%= index === 0 %>" value="<%= address.id %>" ><%= address.name %> <%= address.cellphone %> <%= address.address%> <%= address.post %></option>
                   <% end %>
