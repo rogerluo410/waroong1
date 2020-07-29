@@ -22,7 +22,7 @@
         <div>
           <i class='fa fa-shopping-cart'></i> 购物车 (<%= @order_items.length %>)
         </div>
-        <%= f.submit "确认订单", class: "btn btn-xs btn-info", data: { turbolinks: 'false'} %>
+        <%= f.submit "确认订单", class: "btn btn-xs btn-info", data: { turbolinks: 'false' } %>
       </div>
       <% if current_user.addresses.length > 0 %>
         <div class="item-b-l pb-3 mt-3 pr-3 pl-3">

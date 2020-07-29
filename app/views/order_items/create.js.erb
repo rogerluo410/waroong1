@@ -1,5 +1,5 @@
 <% if @order.errors.any? %>
-  alert("not valid.")
+  alert("错误的订单.")
 <% else %>
   $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
 <% end %>

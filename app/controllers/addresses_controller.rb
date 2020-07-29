@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
   end
 
   def show
-    @address = Address.find(params[:id])
+    redirect_to addresses_path and return
   end
 
   def new
@@ -23,22 +23,21 @@ class AddressesController < ApplicationController
     @address = current_user.addresses.create(address_params)
     if @address.persisted?
       flash[:notice] = '创建地址成功'
-      redirect_to addresses_path
+      redirect_to addresses_path and return
     else
-      flash.now[:error] = '创建地址失败, 请重试'
-      render :new
+      flash[:error] = @address.errors.full_messages.join('<br />')
+      redirect_to new_address_path and return
     end
   end
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
 
-    if @address.persisted?
+    if @address.update(address_params)
       flash[:notice] = '更新地址成功'
-      redirect_to addresses_path
+      redirect_to addresses_path and return
     else
-      flash.now[:error] = '更新地址失败, 请重试'
+      flash[:error] = @address.errors.full_messages.join('<br />')
       render :edit
     end
   end
@@ -46,6 +45,7 @@ class AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.update(is_delete: true)
+    @addresses = current_user.addresses.where("is_delete is false")
   end
 
   private

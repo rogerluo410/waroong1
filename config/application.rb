@@ -30,7 +30,7 @@ module Waroong
       g.helper false
       g.assets false
     end
-    config.i18n.default_locale = :cn
+    config.i18n.default_locale = 'zh-CN'
     config.time_zone = "Asia/Shanghai"
     config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
 

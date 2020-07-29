@@ -1,6 +1,28 @@
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+<div class="row flash-message-wrapper">
+  <% if notice %>
+    <p class="alert alert-success">
+      <%= notice %>
+    </p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger">
+      <%= alert %>
+    </p>
+  <% end %>
+</div>
+
+<script>
+$(function() {
+  setTimeout(function(){
+      $('.alert').fadeOut(400);
+  }, 1800);
+});
+</script>
+
+<style>
+.flash-message-wrapper {
+  position: fixed;
+  top: 20px; 
+  right: 40px;
+}
+</style>

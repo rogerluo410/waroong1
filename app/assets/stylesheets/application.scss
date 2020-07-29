@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "font-awesome";
+@import "toastr";
 @import "buttons";
 @import "form";
 @import "table";
@@ -87,4 +88,8 @@ a:hover {
 
 .text-warning {
   color: #f0ad4e
+}
+
+.text-red {
+  color: #f06e4e
 }

@@ -9,17 +9,47 @@ cn:
     - 星期五
     - 星期六
   activerecord:
+    attributes:
+      address:
+        name: "收件人姓名"
+        cellphone: "收件人手机号"
+        address: "收件地址"
+        post: "邮政编码"
+      user:
+        email: "邮箱"
+        cellphone: "手机号"
+        password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
     errors:
+      full_messages:
+        format: "%{message}"
       models:
+        address:
+          attributes:
+            name:
+              blank: 不能为空
+            cellphone:
+              blank: 不能为空
+            address:
+              blank: 不能为空
+            post:
+              blank: 不能为空
         user:
           attributes:
             email:
               blank: 不能为空
+            cellphone:
+              blank: 不能为空
             password:
               blank: 不能为空
-              too_short: 密码不能少于6位
+              too_short: 不能少于6位
             password_confirmation:
-              confirmation: 密码不一致
+              confirmation: 不一致
+            current_password:
+              blank: 不能为空
+      messages:
+        record_invalid: 非法的记录
     models:
       product: 药品
       product_category: 药品类型

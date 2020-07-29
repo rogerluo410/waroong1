@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
+  validates :cellphone, format: { with: /1\d{10}/, message: "格式错误" }
+
   include Redis::Objects
   hash_key :cart, :expiration => 15.minutes
 

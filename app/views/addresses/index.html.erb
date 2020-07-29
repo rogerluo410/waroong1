@@ -2,34 +2,7 @@
   <div class="row justify-content-end mb-3">
     <%= link_to "新增收货地址", new_address_path, class: "btn btn-primary ", role: "button" %>
   </div>
-  <div class="row bg-white">
-    
-    <table class="table table-collapse-tablet">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">姓名</th>
-          <th scope="col">手机号</th>
-          <th scope="col">收货地址</th>
-          <th scope="col">邮编</th>
-          <th scope="col">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @addresses.each_with_index do |address, index| %>
-          <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <td><%= address.name %></td>
-            <td><%= address.cellphone %></td>
-            <td><%= address.address %></td>
-            <td><%= address.post %></td>
-            <td>
-              <%= link_to '编辑', edit_address_path(address) %>
-              <%= link_to '删除', address_path(address), method: :delete, data: { confirm: '您确定删除吗?' } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row bg-white user-addresses">
+    <%= render "address_row", addresses: @addresses %>
   </div>
 </div>
