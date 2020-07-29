@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   def new
-    add_breadcrumb '订单支付'
+    add_breadcrumb '支付订单'
     unless params["address_id"].present?
       flash[:error] = '提交订单失败, 请先添加收货地址'
       redirect_to cart_path and return

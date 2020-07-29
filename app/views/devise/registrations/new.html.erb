@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4 offset-md-4 p-4 card bg-white">
-      <h5>用户注册</h5>
+      <h5 class="title-info">新用户注册</h5>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'needs-validation', novalidate: true } ) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>

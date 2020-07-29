@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4 offset-md-4 p-4 card bg-white">
-      <h5>用户登录</h5>
+      <h5 class="title-info">用户登录</h5>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'needs-validation', novalidate: true } ) do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group">

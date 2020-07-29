@@ -15,7 +15,7 @@
         <% @orders.each_with_index do |order, index | %>
           <tr>
             <th scope="row"><%= index + 1 %></th>
-            <td><%= order.id %></td>
+            <td><%= order.uid %></td>
             <td>¥ <%= order.subtotal_yuan %></td>
             <td><%= order.order_status&.name %></td>
             <td><%= order.created_at&.try(:strftime, "%Y-%m-%d %H:%M:%S") %></td>

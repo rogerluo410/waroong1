@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6 offset-md-3 p-4 card bg-white">
-      <h5>支付订单</h5>
+      <h5 class="title-warning">支付订单</h5>
       <p><span id="expiry_time" class="text-warning"></span> 后支付过期, 请尽快完成支付.</p>
       <form action="/charges" method="post" id="payment-form">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>

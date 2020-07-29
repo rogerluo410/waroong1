@@ -24,11 +24,11 @@
         </div>
         <%= f.submit "确认订单", class: "btn btn-xs btn-info", data: { turbolinks: 'false' } %>
       </div>
-      <% if current_user.addresses.length > 0 %>
+      <% if @addresses.length > 0 %>
         <div class="item-b-l pb-3 mt-3 pr-3 pl-3">
           <label class="text-muted"><i class='fa fa-address-book'></i> 选择收货地址</label>
           <select name="address_id" class="custom-select my-select" id="inputGroupSelect01">
-            <% current_user.addresses.each_with_index do | address, index| %>
+            <% @addresses.each_with_index do | address, index| %>
               <option selected="<%= index === 0 %>" value="<%= address.id %>" ><%= address.name %> <%= address.cellphone %> <%= address.address%> <%= address.post %></option>
             <% end %>
           </select>
