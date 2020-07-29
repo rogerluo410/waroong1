@@ -9,10 +9,10 @@
 <% end %>
 <% if @order_items.size == 0 %>
   <p class="text-center">
-    购物车中还没有药品. 请 <%= link_to "返回", root_path %> 并将药品加入购物车.
+    购物车中还没有药品. 请 <%= link_to "返回", root_path %> 并将药品加入购物车中.
   </p>
   <div class="row justify-content-center">
-    <img src="<%= image_url('car.png') %>" alt="购物车中没有商品" />
+    <img src="<%= image_url('car.png') %>" width="350" height="200" alt="购物车中没有商品" draggable="false" />
   </div>
 <% else %>
   <div class="shopping-cart">
