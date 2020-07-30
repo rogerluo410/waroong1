@@ -5,9 +5,9 @@
         <%= image_tag(@product.image.variant(resize_to_fill: [360, 360]), class: "img-fluid", draggable: "false") if @product.image.attached? %>
         <div class="product-title">
           <h5 class="card-title"><%= @product.name %></h5>
-          <p class="card-text"> 价格: ¥<%= @product.sell_price_fen_yuan %></p>
-          <p class="card-text"> 规格: <%= @product.specification %></p>
-          <p class="card-text"> 生产厂商: <%= @product.vendor_cn %></p>
+          <p class="text-muted"> 价格: ¥<%= @product.sell_price_fen_yuan %></p>
+          <p class="text-muted"> 规格: <%= @product.specification %></p>
+          <p class="text-muted"> 生产厂商: <%= @product.vendor_cn %></p>
           <div class="mt-5">
             <%= form_for @order_item, remote: true do |f| %>
               <%= f.hidden_field :product_id, value: @product.id %>
@@ -28,7 +28,7 @@
           <img src="<%= image_url('car.png') %>" width="520" height="300" alt="没有描述" draggable="false" />
         </div>
         <div class="row justify-content-center">
-          <p class="card-text">没有描述</p>
+          <p class="text-muted">没有描述</p>
         </div>
       </div>
     </div>

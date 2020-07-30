@@ -9,10 +9,10 @@
 <% end %>
 <% if @order_items.size == 0 %>
   <p class="text-center">
-    购物车中还没有药品. 请 <%= link_to "返回", root_path %> 并将药品加入购物车中.
+    购物车中还没有商品. 请 <%= link_to "返回", root_path %> 并将商品加入购物车中.
   </p>
   <div class="row justify-content-center">
-    <img src="<%= image_url('car.png') %>" width="350" height="200" alt="购物车中没有商品" draggable="false" />
+    <img src="<%= image_url('car.png') %>" width="520" height="300" alt="购物车中没有商品" draggable="false" />
   </div>
 <% else %>
   <div class="shopping-cart">
@@ -24,7 +24,11 @@
         </div>
         <%= f.submit "确认订单", class: "btn btn-xs btn-info", data: { turbolinks: 'false' } %>
       </div>
-      <% if @addresses.length > 0 %>
+      <% if !user_signed_in? %>
+        <p class="text-muted text-center mt-4">
+          您还没有登录, 点击 <%= link_to "登录", new_user_session_path %>.
+        </p>
+      <% elsif @addresses.length > 0 %>
         <div class="item-b-l pb-3 mt-3 pr-3 pl-3">
           <label class="text-muted"><i class='fa fa-address-book'></i> 选择收货地址</label>
           <select name="address_id" class="custom-select my-select" id="inputGroupSelect01">
@@ -34,7 +38,7 @@
           </select>
         </div>
       <% else %>
-        <p class="text-center">
+        <p class="text-muted text-center mt-4">
           您还没有添加收货地址, 请先 <%= link_to "添加", addresses_path %> 收货地址.
         </p>
       <% end %>

@@ -46,7 +46,9 @@
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <%= link_to product, class: "img-card", title: "查看药品详情" do %>
-                  <%= image_tag(product.image.variant(resize_to_fill: [192, 192]), class: "card-img-top") if product.image.attached? %>
+                  <div class="geeks">
+                    <%= image_tag(product.image.variant(resize_to_fill: [192, 192]), class: "card-img-top") if product.image.attached? %>
+                  </div>
                 <% end %>
                 <div class="card-content">
                   <h4 class="card-title">
@@ -55,8 +57,8 @@
                     <% end %>
                   </h4>
                   <p class="">
-                    <p class="card-text"><%= product.specification %></p>
-                    <p class="card-text">价格: ¥ <%= product.sell_price_fen_yuan %></p>
+                    <p class="text-muted"><%= product.specification %></p>
+                    <p class="text-muted">价格: ¥ <%= product.sell_price_fen_yuan %></p>
                   </p>
                 </div>
                 <div class="card-read-more">
